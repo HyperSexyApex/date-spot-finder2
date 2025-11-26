@@ -1,0 +1,396 @@
+/* ===============================
+   全体レイアウトとタイトル部分
+   =============================== */
+.site-header {
+  max-width: 900px; /* 中央寄せの最大幅 */
+  margin: 0 auto;
+  text-align: center; /* ヘッダー全体を中央寄せ */
+  position: relative;
+  padding-top: 88px; /* ← ナビボタン分の余白を上に確保 */
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===== タイトル部分 ===== */
+.site-title {
+  display: inline-block; /* 中央寄せのため */
+  margin: 20px auto;
+  border: 3px solid rgb(241, 229, 241);
+  border-radius: 12px;
+  padding: 10px 20px;
+  background: #1783c27a;
+  color: #f0eeee;
+  font-size: 60px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(44, 8, 247, 0.96);
+}
+　　 .tagline {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
+  padding: 10px;
+  border: 2px double rgb(119, 255, 255);
+  border-radius: 8px;
+  background: #1783c27a;
+  color: #0300a3;
+  font-size: 35px;
+  font-style: italic;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* ===============================
+　　背景設定（固定＋ぼかし）
+   =============================== */
+body {
+  position: relative;
+  background-image: url("../images/KAKEGAWA_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+/* 背景ぼかしレイヤー */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+  backdrop-filter: blur(3px);
+  z-index: -1; /* 背景の下に配置 */
+}
+
+/* ===============================
+   ナビゲーション（ハンバーガー）
+   =============================== */
+
+/* ナビ全体を右上に固定 */
+.site-nav {
+  position: fixed;
+  top: 12px;
+  right: 14px;
+  z-index: 1000; /* 他の要素より上に固定 */
+}
+
+/* ハンバーガーボタン */
+.nav-toggle {
+  position: relative;
+  z-index: 1002; /* リストより上に表示 */
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer; /* ホバー時にポインターに変化 */
+  transition: all 0.3s ease; /* スムーズなアニメーション */
+}
+
+/* ハンバーガーにホバーしたときの光る効果 */
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #00ffff;
+  transform: scale(1.08);
+  box-shadow: 0 0 10px #00ffff;
+}
+
+.nav-toggle:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 4px #00ffff inset;
+}
+
+/* ===== ドロップダウン（開いたときの中身） ===== */
+.nav-list {
+  position: absolute; /* ハンバーガーを基準に配置 */
+  top: calc(100% + 8px); /* ボタンの真下8pxに出す */
+  right: 0;
+  display: none; /* 初期は非表示 */
+  list-style: none;
+  margin: 0;
+  padding: 8px 12px;
+  gap: 12px; /* 各リンクの間隔 */
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  z-index: 1001; /* ボタンより下、本文より上 */
+  flex-direction: row; /* 横並び */
+  align-items: center;
+}
+
+/* 開いたときだけ表示 */
+.site-nav.open .nav-list {
+  display: flex;
+}
+
+/* ===== リンクデザイン ===== */
+.nav-list a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* ホバー時のアンダーライン演出 */
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #00ffff;
+  transition: width 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: #00ffff;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+/* ===== スマホ用（縦展開モード） ===== */
+@media (max-width: 720px) {
+  .site-header {
+    padding-top: 72px; /* モバイル時は少し余白を減らす */
+  }
+  .site-nav.open .nav-list {
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: flex-start; /* 左寄せで自然に */
+  }
+}
+
+/* ===== PC専用：常に横並びを維持 ===== */
+@media (min-width: 721px) {
+  .site-nav.open .nav-list {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+}
+
+/* ===== 背景をスクロール対応にする ===== */
+@media (max-width: 600px) {
+  body {
+    background-attachment: scroll;
+  }
+  .tagline {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+/*  メニュー縦化 強制オフ & 横並び固定 修正版 */
+.site-nav {
+  position: fixed;
+  top: 12px;
+  right: 14px;
+  z-index: 1000;
+}
+
+.nav-toggle {
+  position: relative;
+  z-index: 1002;
+}
+
+/* その他二つは削除して以下を使う */
+
+/* === Nav: 右上固定 & ハンバーガーの真下に横並びで開く === */
+.site-nav {
+  position: fixed; /* 画面右上に固定 */
+  top: 12px;
+  right: 14px;
+  z-index: 1000;
+  display: inline-block; /* 自分の幅だけに縮める */
+}
+.nav-toggle {
+  position: relative;
+  z-index: 1002;
+}
+
+/* ドロップダウン本体（ボタンの直下・右寄せ） */
+.nav-list {
+  position: absolute; /* 親(.site-nav)を基準に配置 */
+  top: calc(100% + 8px); /* ボタンの真下に8pxすきま */
+  right: 0;
+  display: none; /* 開く時だけ表示 */
+  flex-direction: row; /* 横並び */
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  list-style: none;
+  white-space: nowrap; /* 折り返し防止＝はみ出し防止 */
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  z-index: 1001;
+}
+.site-nav.open .nav-list {
+  display: flex;
+}
+.nav-list li {
+  display: inline-block;
+}
+.nav-list a {
+  display: inline-block; /* 背景内に収まるように */
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 6px 8px;
+}
+
+/* スマホは縦展開に切替（必要なら） */
+@media (max-width: 720px) {
+  .site-nav.open .nav-list {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+}
+
+/* === 検索／ランダム結果カード === */
+.result-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.result-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.result-body {
+  text-align: left;
+}
+
+.result-title {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.result-desc {
+  font-size: 14px;
+  margin: 0 0 4px;
+}
+
+.result-tags {
+  font-size: 12px;
+  color: #ddd;
+  margin: 0;
+}
+
+/* === 検索／ランダム結果カードの見た目 & アニメーション === */
+.result-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+
+  /* ふわっと登場用の初期状態 */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* 表示状態（フェードイン後の姿） */
+.result-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.result-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.result-body {
+  text-align: left;
+}
+
+.result-title {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.result-desc {
+  font-size: 14px;
+  margin: 0 0 4px;
+}
+
+.result-tags {
+  font-size: 12px;
+  color: #ddd;
+  margin: 0;
+}
+
+/* 🔽 検索結果コンテナ */
+#results {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 🔽 ランダム結果コンテナ */
+#randomResult {
+  margin-top: 20px;
+  padding: 10px;
+  min-height: 120px; /* ← 高さ確保 */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#howto {
+  margin-top: 80px;
+}
+
+/* === お気に入りボタン === */
+.fav-btn {
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffd700; /* ゴールド系 */
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.fav-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.fav-btn.active {
+  background: #ffd700;
+  color: #333;
+  border-color: #ffd700;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MY FIRST DATE SPOT FINDER</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container site-header">
+      <h1 class="site-title">MY FIRST DATE SPOT FINDER</h1>
+      <section class="tagline">〜掛川市編〜</section>
+      <p class="site-lead">掛川市のデートスポットをみつけてみよう！！</p>
+
+      <!-- ナビ -->
+      <nav class="site-nav">
+        <button class="nav-toggle">☰</button>
+        <ul class="nav-list">
+          <li><a href="#story" class="nav-story">開発経緯</a></li>
+          <li><a href="#contact">プロフィール</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container stack">
+      <!-- フィルタ／入力 -->
+      <section class="card">
+        <h2 class="section-title">キーワードを入力して検索してみよう！</h2>
+        <form class="row" id="searchForm" onsubmit="return false;">
+          <input
+            type="text"
+            id="keyword"
+            placeholder="キーワード例：森、公園、温泉、城、牧場"
+          />
+          <div class="chip-row" aria-label="カテゴリ">
+            <button type="button" class="chip">公園</button>
+            <button type="button" class="chip">カフェ</button>
+            <button type="button" class="chip">城</button>
+            <button type="button" class="chip">イルミネーション</button>
+          </div>
+          <button type="submit" class="btn-primary">検索</button>
+        </form>
+        <p class="help">
+          ※ 後で「現在地から近い順」や「所要時間」も追加できます
+        </p>
+      </section>
+
+      <!-- ランダム -->
+      <section class="card">
+        <h2 class="section-title">ランダムで決める！</h2>
+        <p class="明るく">
+          下のボタンを押すだけでランダムにスポットが出てくるよ！
+        </p>
+        <button id="randomBtn" class="btn-secondary">
+          デートスポットをランダムで表示
+        </button>
+        <div id="randomResult" role="status" aria-live="polite">
+          <p class="muted">ボタンを押してみてね！</p>
+        </div>
+      </section>
+
+      <!-- 結果表示 -->
+      <section class="card">
+        <h2 class="section-title">検索結果</h2>
+        <div id="results" class="grid"></div>
+      </section>
+
+      <!-- 使い方 -->
+      <section id="howto" class="card">
+        <h2 class="section-title">HOW TO USE</h2>
+        <ul
+          class="muted"
+          style="text-align: left; margin: 0 auto; max-width: 680px"
+        >
+          <li>キーワードを入れて「検索」を押す</li>
+          <li>迷ったら「ランダム表示」ボタン</li>
+          <li>気に入ったら★お気に入り（後で実装）</li>
+        </ul>
+      </section>
+
+      <!-- 開発経緯（飛び先） -->
+      <section id="story" class="card container">
+        <h2 class="section-title">開発の経緯</h2>
+        <p
+          class="muted"
+          style="text-align: left; margin: 0 auto; max-width: 680px"
+        >
+          毎回スポット探しが手間 → 「パッと出る」ツールが欲しかった。<br />
+          HTML/CSS/JSで最小から構築→GitHub Pagesで公開→機能拡張中。
+        </p>
+      </section>
+
+      <!-- プロフィール（飛び先） -->
+      <section id="contact" class="card container">
+        <h2 class="section-title">プロフィール</h2>
+        <p
+          class="muted"
+          style="text-align: left; margin: 0 auto; max-width: 680px"
+        >
+          現職：装置メンテ・職長。安全管理・観察力・段取りが強み。<br />
+          IT未経験からWebアプリを独学中。本作は掛川のデート支援ツール。
+        </p>
+      </section>
+      <!-- お気に入り一覧 -->
+      <section id="favorites" class="card">
+        <h2 class="section-title">お気に入り</h2>
+        <p id="favoritesEmpty" class="muted">
+          まだお気に入りのスポットはありません。
+        </p>
+        <div id="favoriteResults" class="grid"></div>
+      </section>
+    </main>
+
+    <footer class="container site-footer">
+      <small>© 2025 MY FIRST DATE SPOT FINDER</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
