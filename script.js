@@ -149,6 +149,9 @@ function createSpotCard(spot) {
         <button class="fav-btn ${isFav ? "active" : ""}" data-id="${spot.id}">
           ★ お気に入り
         </button>
+       
+      <!-- 地図を見るボタン追加　-->
+
         <button class="map-btn" data-lat="${spot.lat ?? ""}" data-lng="${
     spot.lng ?? ""
   }"
@@ -288,31 +291,11 @@ if (randomBtn && randomResult) {
     }, 200);
   });
 }
+//document.addEventListener("click",)二重化のため一つ削除。お気に入り機能復活なるか。// 
 
-// ============================
-//  ★ お気に入りボタンクリック（イベント委譲）
-// ============================
+//お気に入りボタンと地図ボタンのイベント処理 //
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".fav-btn");
-  if (!btn) return;
-
-  const id = btn.dataset.id;
-  if (!id) return;
-
-  if (favorites.has(id)) {
-    favorites.delete(id);
-    btn.classList.remove("active");
-  } else {
-    favorites.add(id);
-    btn.classList.add("active");
-  }
-
-  saveFavorites();
-  renderFavorites();
-});
-
-document.addEventListener("click", (e) => {
-  // お気に入り処理（既存）
+  
   const favBtn = e.target.closest(".fav-btn");
   if (favBtn) {
     const id = favBtn.dataset.id;
@@ -337,10 +320,10 @@ document.addEventListener("click", (e) => {
 
     let url;
     if (lat && lng) {
-      // 緯度経度があるとき（正確）
+      // 緯度経度があるときは座標で検索
       url = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
     } else {
-      // 無いときは名前で検索（エンコード済みの q を使う）
+      // 無いときは名前で検索
       url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
         decodeURIComponent(q)
       )}`;
@@ -352,4 +335,4 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//　めｍ
+
