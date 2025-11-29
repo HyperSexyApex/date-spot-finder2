@@ -418,7 +418,7 @@ body::before {
   /*  上のテキストをテキストボックスで囲う  */
 
 .story-textbox {
-  border: 2px #ccc; /*枠線*/
+  border: 2px solid #ccc; /*枠線*/
   padding: 16px; /*内側の余白*/
   border-radius: 12px; /*角丸*/
   background: rgba(0, 0, 0, 0.25); /*背景色*/
@@ -428,7 +428,7 @@ body::before {
 }
 
 .contact-textbox {
-  border: 2px #ccc; /*枠線*/
+  border: 2px solid #ccc; /*枠線*/
   padding: 16px; /*内側の余白*/
   border-radius: 12px; /*角丸*/
   background: rgba(0, 0, 0, 0.25); /*背景色*/
@@ -457,3 +457,45 @@ max-width: 680px;}
   font-size: 22px;
   
 }
+
+/*  モーダルの見た目のCSS  */
+
+.modal {
+  position: fixed;/*ブラウザの画面全体に固定配置*/
+  inset: 0;/*上、右、下、左すべて0に設定まとめている*/
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal.hidden {
+  display: none; /*非表示にする*/
+}
+.modal-content { /*モーダルの中身*/
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 480px;
+  color: #333;
+  font-size: 15px;
+  position: relative;}
+
+.modal-colse {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  max-width: 32px;
+  }
+
+  #modalDesc {
+    white-space: pre-line; /*改行を反映させる*/
+    border: #0300a3 2px solid;
+  }
+
+
+  /*  モーダル画像の大きさ均一、✖ボタン配置を右下に  
+  モーダル内の文字を囲う枠、タイトル下線追加  */
+  

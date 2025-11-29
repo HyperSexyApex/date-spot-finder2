@@ -29,7 +29,7 @@ const spots = [
     tags: ["公園", "花", "鳥", "屋内"],
     keyword: "公園",
     image: "images/spot_katyouen.jpg",
-    desc: "全天候型で楽しめる、花と鳥のテーマパーク。雨の日デートにもぴったり。",
+    desc: "全天候型で楽しめる、花と鳥のテーマパーク。\n雨の日デートにもぴったり。\n掛川花鳥園にしかいない鳥もたくさん！",
     lat: 34.76184, //緯度
     lng: 138.01515, //経度
   },
@@ -39,7 +39,7 @@ const spots = [
     tags: ["城", "歴史", "景色"],
     keyword: "城",
     image: "images/spot_kakegawajou.jpg",
-    desc: "街を見渡せる天守閣が魅力。夜のライトアップも雰囲気◎。",
+    desc: "街を見渡せる天守閣が魅力。夜のライトアップも雰囲気◎。\n歴史好きカップルにおすすめ！",
     lat: 34.77536,
     lng: 138.01429,
   },
@@ -49,7 +49,7 @@ const spots = [
     tags: ["イルミネーション", "夜景", "ロマンチック"],
     keyword: "イルミネーション",
     image: "images/spot_tumagoi.jpg",
-    desc: "夜のイルミネーションがロマンチックなスポット。特別な日のデートに。",
+    desc: "夜のイルミネーションがロマンチックなスポット。\n特別な日のデートに。",
     lat: 34.76696,
     lng: 138.04602,
   },
@@ -59,7 +59,7 @@ const spots = [
     tags: ["公園", "芝生", "ピクニック"],
     keyword: "公園",
     image: "images/spot_park22.jpg",
-    desc: "広い芝生でのんびりできる公園。お弁当デートにぴったり。",
+    desc: "広い芝生でのんびりできる公園。\nお弁当を作ってピクニックに行こう！\n晴れた日におすすめ。",
     lat: 34.77566,
     lng: 138.06043,
   },
@@ -70,7 +70,7 @@ const spots = [
     tags: ["カフェ", "ハンバーガー", "おしゃれ"],
     keyword: "カフェ",
     image: "images/spot_3rings_burger.jpg",
-    desc: "おしゃれなハンバーガーカフェ。デートにぴったりの雰囲気です。",
+    desc: "おしゃれなハンバーガーカフェ。\nちょっぴり大人な雰囲気がデートにぴったり。\nボリューム満点のバーガーが人気。",
     lat: 34.76902,
     lng: 138.02003,
   },
@@ -80,7 +80,7 @@ const spots = [
     tags: ["カフェ", "アンティーク", "落ち着く"],
     keyword: "カフェ",
     image: "images/spot_anticafe_road.jpg",
-    desc: "アンティークな雰囲気が魅力のカフェ。隠れ家みたいな落ち着く空間。",
+    desc: "アンティークな雰囲気が魅力のカフェ。\n隠れ家みたいな落ち着く空間。\n掛川市の秘密基地カフェ。",
     lat: 34.81094,
     lng: 138.07478,
   },
@@ -90,7 +90,7 @@ const spots = [
     tags: ["カフェ", "ベジタリアン", "デザート"],
     keyword: "カフェ",
     image: "images/spot_fannyfarm.jpg",
-    desc: "ベジタリアン向けメニューやデザートが楽しめるカフェ。駅近で使いやすい。",
+    desc: "ベジタリアン向けメニューやデザートが楽しめるカフェ。\nJR掛川駅北口から徒歩2分の好立地。\n健康志向カップルにおすすめ！",
     lat: 34.77118,
     lng: 138.01551,
   },
@@ -100,7 +100,7 @@ const spots = [
     tags: ["カフェ", "パン", "できたて", "安い"],
     keyword: "カフェ",
     image: "images/spot_koppepan_tazima.jpg",
-    desc: "掛川市にできたコッペパン田島。注文が入ってから作り始めるので長打のれつができる！時間がある人におすすめ。",
+    desc: "掛川市にできたコッペパン田島。\n注文が入ってから作り始めるので焼きたてが食べられる！\n土日は開店から長蛇の列！？。\nコーヒーとセットがおすすめ！",
     lat: 34.76104,
     lng: 138.02013,
   },
@@ -135,6 +135,7 @@ function saveFavorites() {
 function createSpotCard(spot) {
   const article = document.createElement("article");
   article.className = "result-card";
+  article.dataset.id = spot.id;
 
   const isFav = favorites.has(spot.id);
 
@@ -332,5 +333,47 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//  詳細モーダル関連の要素取得  //
 
+const detailModal = document.getElementById("detailModal");
+const modalimg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalClose = document.getElementById("modalClose");
 
+document.addEventListener("click", (e) => {
+  const clickcard = e.target.closest(".result-card");
+  if (e.target.closest(".fav-btn") || e.target.closest(".map-btn")) 
+
+    return; // お気に入りボタンや地図ボタンのクリックは無視 /
+  if(!clickcard) return; // カード以外のクリックは無視 //
+
+  //id取得してデータ検索 //
+
+  const spotId = clickcard.dataset.id;
+  const spot = spots.find((s) => s.id === spotId);
+  if (!spot) return;
+
+  // モーダルに情報セット //
+  modalimg.src = spot.image;
+  modalimg.alt = spot.name;
+  modalTitle.textContent = spot.name;
+  modalDesc.textContent = spot.desc;
+
+  // モーダル表示 //
+  detailModal.classList.remove("hidden");
+});
+
+// モーダル閉じるボタン //
+if (modalClose && detailModal) {
+  modalClose.addEventListener("click", () => {
+    detailModal.classList.add("hidden");
+  });
+
+  //黒背景クリックで閉じる //
+  detailModal.addEventListener("click", (e) => {
+    if (e.target === detailModal) {
+      detailModal.classList.add("hidden");
+    }
+  });
+}
