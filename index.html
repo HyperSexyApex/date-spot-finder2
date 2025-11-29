@@ -37,16 +37,16 @@
             id="keyword"
             placeholder="キーワード例：森、公園、温泉、城、牧場"
           />
-          <div class="chip-row" aria-label="カテゴリ">
+          <div class="chip-row" aria-label="カテゴリ"> <!-- チップボタンたち-->
             <button type="button" class="chip">公園</button>
             <button type="button" class="chip">カフェ</button>
             <button type="button" class="chip">城</button>
             <button type="button" class="chip">イルミネーション</button>
           </div>
-          <button type="submit" class="btn-primary">検索</button>
+          <button type="submit" class="btn-primary">☆検索☆</button>
         </form>
         <p class="help">
-          ※ 後で「現在地から近い順」や「所要時間」も追加できます
+          ※ 後実装予定で「現在地から近い順」や「所要時間」も追加できます
         </p>
       </section>
 
@@ -77,38 +77,40 @@
           class="muted"
           style="text-align: left; margin: 0 auto; max-width: 680px"
         >
-          <li>キーワードを入れて「検索」を押す</li>
-          <li>迷ったら「ランダム表示」ボタン</li>
-          <li>気に入ったら★お気に入り</li>
+          <li class="how">キーワードを入れて「検索」   ボタンを押す。</li>
+          <li class="how">迷ったら「ランダム表示」ボタンを押すだけで場所を決定しよう。</li>
+          <li class="how">気に入ったら★お気に入りボタンを押そう。画面下にお気に入り一覧が表示されるよ。</li>
         </ul>
       </section>
 
       <!-- 開発経緯（飛び先） -->
       <section id="story" class="card container">
         <h2 class="section-title">開発の経緯</h2>
-        <p
-          class="muted"
-          style="text-align: left; margin: 0 auto; max-width: 680px"
-        >
-          毎回スポット探しが手間 → 「パッと出る」ツールが欲しかった。<br />
-          HTML/CSS/JSで最小から構築→GitHub Pagesで公開→機能拡張中。
+        <p class="story-textbox">
+        デートスポットを毎回決めるのが大変であったため</br>デート当日でも
+        すぐ決められるツールが欲しかった。</br>
+        そこでまずは、自分で作ってみようと思い作成しました。</br>
+        誰でも気軽に使用できるようにシンプルなUI意識や</br>
+        検索機能やお気に入り機能を実装しました。
+
         </p>
       </section>
 
       <!-- プロフィール（飛び先） -->
       <section id="contact" class="card container">
         <h2 class="section-title">プロフィール</h2>
-        <p
-          class="muted"
-          style="text-align: left; margin: 0 auto; max-width: 680px"
-        >
-          現職：装置メンテ・職長。安全管理・観察力・段取りが強み。<br />
-          IT未経験からWebアプリを独学中。本作は掛川のデート支援ツール。
+        <p class="contact-textbox">
+        1998年生まれ、静岡県掛川市出身。</br>
+        中学から高校生まで陸上競技に打ち込み、県内ではトップ４に入る。</br>
+        卒業後は大学に進学後中退をして、公務員の専門へ進学。</br>
+        努力実らず公務員の道は断念。</br>
+        その後一般企業に３年勤務。</br>転職をし　今の半導体関連の会社に就職。</br>
+        IT業界で働くことに興味を持ち、独学でプログラミングを学び始めた。</br>
         </p>
       </section>
       <!-- お気に入り一覧 -->
       <section id="favorites" class="card">
-        <h2 class="section-title">お気に入り</h2>
+        <h2 class="section-title">お気に入り一覧　</h2>
         <p id="favoritesEmpty" class="muted">
           まだお気に入りのスポットはありません。
         </p>

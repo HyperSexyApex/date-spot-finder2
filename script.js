@@ -1,6 +1,6 @@
-// ============================
+
+
 //  ナビゲーション（ハンバーガー）
-// ============================
 
 // ハンバーガー開閉
 const navToggle = document.querySelector(".nav-toggle");
@@ -19,9 +19,9 @@ if (navToggle && siteNav) {
   });
 }
 
-// ============================
+
 //  デートスポットデータ
-// ============================
+
 const spots = [
   {
     id: "katyouen",
@@ -106,9 +106,8 @@ const spots = [
   },
 ];
 
-// ============================
+
 //  お気に入り管理
-// ============================
 
 const favorites = new Set(); // spot.id を入れる。表示データとお気に入り情報を分離管理を効率化
 
@@ -130,9 +129,9 @@ function saveFavorites() {
   localStorage.setItem("favorites", JSON.stringify([...favorites]));
 }
 
-// ============================
+
 //  カード（画像＋説明＋★ボタン）を作る関数
-// ============================
+
 function createSpotCard(spot) {
   const article = document.createElement("article");
   article.className = "result-card";
@@ -201,9 +200,8 @@ function renderFavorites() {
 // 初期表示
 renderFavorites();
 
-// ============================
+
 //  検索処理
-// ============================
 const searchForm = document.getElementById("searchForm");
 const keywordInput = document.getElementById("keyword");
 const resultsContainer = document.getElementById("results");
@@ -269,9 +267,8 @@ chips.forEach((chip) => {
   });
 });
 
-// ============================
+
 //  ランダムで1件表示
-// ============================
 const randomBtn = document.getElementById("randomBtn");
 const randomResult = document.getElementById("randomResult");
 
@@ -334,5 +331,6 @@ document.addEventListener("click", (e) => {
     return;
   }
 });
+
 
 

@@ -1,12 +1,10 @@
-/* ===============================
-   全体レイアウトとタイトル部分
-   =============================== */
+/*   全体レイアウトとタイトル部分*/
 .site-header {
   max-width: 900px; /* 中央寄せの最大幅 */
   margin: 0 auto;
   text-align: center; /* ヘッダー全体を中央寄せ */
   position: relative;
-  padding-top: 88px; /* ← ナビボタン分の余白を上に確保 */
+  padding-top: 88px; /* ナビボタン分の余白を上に確保 */
 }
 
 main {
@@ -42,9 +40,7 @@ main {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
-/* ===============================
-　　背景設定（固定＋ぼかし）
-   =============================== */
+/*背景設定（固定＋ぼかし） */
 body {
   position: relative;
   background-image: url("../images/KAKEGAWA_bg.jpg");
@@ -65,9 +61,7 @@ body::before {
   z-index: -1; /* 背景の下に配置 */
 }
 
-/* ===============================
-   ナビゲーション（ハンバーガー）
-   =============================== */
+
 
 /* ナビ全体を右上に固定 */
 .site-nav {
@@ -86,7 +80,7 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.25);
-  color: #fff;
+  color: #0f9c95;
   font-size: 20px;
   cursor: pointer; /* ホバー時にポインターに変化 */
   transition: all 0.3s ease; /* スムーズなアニメーション */
@@ -105,7 +99,7 @@ body::before {
   box-shadow: 0 0 4px #00ffff inset;
 }
 
-/* ===== ドロップダウン（開いたときの中身） ===== */
+/*ドロップダウン（開いたときの中身）*/
 .nav-list {
   position: absolute; /* ハンバーガーを基準に配置 */
   top: calc(100% + 8px); /* ボタンの真下8pxに出す */
@@ -129,7 +123,7 @@ body::before {
   display: flex;
 }
 
-/* ===== リンクデザイン ===== */
+/* リンクデザイン  */
 .nav-list a {
   color: #ffffff;
   text-decoration: none;
@@ -138,7 +132,7 @@ body::before {
   transition: color 0.3s ease;
 }
 
-/* ホバー時のアンダーライン演出 */
+/* ホバー時のアンダーライン演出,ハンバーガーの中、（経緯とプロフの部分） */
 .nav-list a::after {
   content: "";
   position: absolute;
@@ -158,7 +152,7 @@ body::before {
   width: 100%;
 }
 
-/* ===== スマホ用（縦展開モード） ===== */
+/*  スマホ用（縦展開モード）  */
 @media (max-width: 720px) {
   .site-header {
     padding-top: 72px; /* モバイル時は少し余白を減らす */
@@ -169,7 +163,7 @@ body::before {
   }
 }
 
-/* ===== PC専用：常に横並びを維持 ===== */
+/* PC専用：常に横並びを維持 */
 @media (min-width: 721px) {
   .site-nav.open .nav-list {
     flex-direction: row !important;
@@ -177,7 +171,7 @@ body::before {
   }
 }
 
-/* ===== 背景をスクロール対応にする ===== */
+/*  背景をスクロール対応にする  */
 @media (max-width: 600px) {
   body {
     background-attachment: scroll;
@@ -201,9 +195,9 @@ body::before {
   z-index: 1002;
 }
 
-/* その他二つは削除して以下を使う */
 
-/* === Nav: 右上固定 & ハンバーガーの真下に横並びで開く === */
+
+/*  Nav: 右上固定 & ハンバーガーの真下に横並びで開く  */
 .site-nav {
   position: fixed; /* 画面右上に固定 */
   top: 12px;
@@ -258,7 +252,7 @@ body::before {
   }
 }
 
-/* === 検索／ランダム結果カード === */
+/* 検索／ランダム結果カード */
 .result-card {
   display: flex;
   gap: 12px;
@@ -298,7 +292,7 @@ body::before {
   margin: 0;
 }
 
-/* === 検索／ランダム結果カードの見た目 & アニメーション === */
+/*  検索／ランダム結果カードの見た目 & アニメーション */
 .result-card {
   display: flex;
   gap: 12px;
@@ -371,7 +365,7 @@ body::before {
   margin-top: 80px;
 }
 
-/* === お気に入りボタン === */
+/*  お気に入りボタン */
 .fav-btn {
   margin-left: 8px;
   padding: 2px 6px;
@@ -393,4 +387,73 @@ body::before {
   background: #ffd700;
   color: #333;
   border-color: #ffd700;
+}
+
+.map-btn:hover {
+  background: rgba(10, 195, 228, 0.945);
+  transform: scale(1.05);
+  cursor:pointer;
+} 
+
+#story p {
+  color: #79d1d1f5;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  text-decoration: underline;
+  text-decoration-color: #ddd;
+  text-shadow: #0794e6 1px 1px 2px; 
+  }
+#contact p {
+  color: #79d1d1f5; 
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  text-decoration: underline;
+  text-decoration-color: #ddd;
+  text-shadow: #0794e6 1px 1px 2px;
+
+  }
+  
+  /*  上のテキストをテキストボックスで囲う  */
+
+.story-textbox {
+  border: 2px #ccc; /*枠線*/
+  padding: 16px; /*内側の余白*/
+  border-radius: 12px; /*角丸*/
+  background: rgba(0, 0, 0, 0.25); /*背景色*/
+  line-height: 1.6; /*行間*/
+  
+  
+}
+
+.contact-textbox {
+  border: 2px #ccc; /*枠線*/
+  padding: 16px; /*内側の余白*/
+  border-radius: 12px; /*角丸*/
+  background: rgba(0, 0, 0, 0.25); /*背景色*/
+  line-height: 1.6; /*行間*/
+
+}
+
+.how {
+  font-size:17px;
+max-width: 680px;} 
+
+/* チップボタンのスタイル HTMl40行目付近 */
+.chip-row .chip{
+  color:#79d1d1f5;   
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+
+.btn-primary{
+  color: #79d1d1f5;
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.25);  
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor:pointer;
+  font-size: 22px;
+  
 }
